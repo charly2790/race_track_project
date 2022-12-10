@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block  titulo%}Login{% endblock  titulo%}
+{% block body %}
+<main class="form-signin w-100 m-auto">
+    <form action="/login" method="POST">
+      <img class="mb-4" src="{{ url_for('static',filename='img/logo.png') }}" alt="" width="144" height="114">
+
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" name = "email" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <!-- Mediante el campo name identificare los datos en el backend -->
+        <input type="password" class="form-control" id="floatingPassword" name = "password" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>
+  </main>
+{% endblock  %}
