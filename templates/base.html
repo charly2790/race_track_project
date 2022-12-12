@@ -14,38 +14,40 @@
     <title>{% block titulo %} {% endblock %}</title>
 </head>
 
-<body class="text-center">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-          <div class="container">
-            <a class="navbar-brand" href="#">Race Trak</a>
-            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#" aria-current="page">Inicio<span class="visually-hidden">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Carreras</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Perfil</a>
-                    </li>
-                </ul>
-                <button class="btn btn-outline-success">Login</button>
+<body>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Race Trak</a>
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" aria-current="page">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Carreras</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Perfil</a>
+                        </li>
+                    </ul>
+                    <button class="btn btn-outline-success">Login</button>
+                </div>
             </div>
-      </div>
-    </nav>
-
-    {% block body%}
-    {% endblock %}
-
+        </nav>
+    <main>
+            {% block main%}
+            {% endblock %}
+    </main>
     <footer class="bg-dark fixed-bottom">
         <div class="text-center p-3 text-white">
             @2022 Copyright: MorganSoft
         </div>
     </footer>
 </body>
+
 </html>

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block titulo%}Lista Carreras{% endblock titulo%}
+{% block main %}
+
+<div class="div-main">
+<table class="tabla-carreras">
+    <thead>
+        <th><h2  class="text-white fw-bold">Carreras</h2></th>
+    </thead>
+    <tbody>
+        {% for carrera in carreras %}
+        <tr>
+            <td>
+                <div class="card justify-content-center">
+                    <div class="row g-0">
+                        <div class="col-md-3">
+                            <img width="90" src="uploads/{{carrera[5]}}" class="img-fluid " alt="Logo de la carrera">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="card-title ">(ID: {{carrera[0]}}) {{carrera[1]}} - {{carrera[2]}} Km.</h5>
+                                <p class="card-text ">{{carrera[3]}} - {{carrera[4]}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 row justify-content-center align-items-center">
+                            <div class="card-body">
+                                <a href="/editRace/{{carrera[0]}}" class="text-decoration-none">
+                                    <button type="button" class="btn btn-primary d-inline button-estado">Editar</button>
+                                </a>
+                                <a href="" class="text-decoration-none">
+                                    <button type="button" class="btn btn-danger d-inline button-estado" data-bs-toggle="modal" data-bs-target="#validateDelete">Eliminar</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+
+{% endblock %}

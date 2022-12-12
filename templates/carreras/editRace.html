@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block titulo%}Editar Carrera{% endblock titulo%}
+{% block main %}
+
+<div class="div-main">
+    <form class="m-lg-auto col-lg-4" action="/udpate_carrera" method="POST" enctype="multipart/form-data">
+        <div>
+            <h2  class="text-white fw-bold text-center pt-20">Editar Carrera</h2>
+        </div>
+        <div class="row g-2 m-3">
+            <div class="col-md-2 form-floating m-0">
+                <input type="text" readonly class="form-control" value="{{carrera[0][0]}}" id="idText" name="idText" placeholder="ID">
+                <label for="idText">ID</label>
+            </div>
+            <div class="form-floating col-md-10 m-0">
+                <input type="text" class="form-control" value="{{carrera[0][1]}}" id="nombreCarreraText" name="nombreCarreraText" placeholder="Nombre de la carrera">
+                <label for="nombreCarreraText">Nombre de la carrera</label>
+            </div>
+        </div>
+        <div class="row g-2 m-3">
+            <div class="col-md form-floating m-0">
+                <input type="date" class="form-control" value="{{carrera[0][3]}}" id="fechaDatetime" name="fechaDatetime" placeholder="Fecha">
+                <label for="fechaDatetime">Fecha</label>
+            </div>
+            <div class="col-md form-floating m-0">
+                <input type="text" class="form-control" value="{{carrera[0][2]}}" id="distanciaText" name="distanciaText" placeholder="Distancia">
+                <label for="distanciaText">Distancia</label>
+            </div>
+        </div>
+        <div class="form-floating m-3">
+            <input type="text" class="form-control" value="{{carrera[0][4]}}" id="lugarCarreraText" name="lugarCarreraText" placeholder="Lugar de la carrera">
+            <label for="lugarCarreraText">Lugar de la carrera</label>
+        </div>
+
+        <div class="row g-2 m-3">
+            <div class="col-md-2 form-floating m-0">
+                <img width="60" src="{{url_for('uploads', nombreLogo=carrera[0][5])}}" class="img-fluid " alt="Logo de la carrera">
+            </div>
+            <div class="col-md-10 m-0 form-floating  text-white text-start fw-bold">
+                <input type="file" class="form-control" id="logoFile" name="logoFile" placeholder="Logo">
+            </div>
+        </div>
+        <button class="btn btn-lg btn-success" type="submit">Guardar</button>
+    </form>
+</div>
+{% endblock %}

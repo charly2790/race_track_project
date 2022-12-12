@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block titulo%}Crear Carrera{% endblock titulo%}
+{% block main %}
+<div class="div-main">
+    <form class="m-lg-auto col-lg-4" action="/insert_carrera" method="POST" enctype="multipart/form-data">
+        <div>
+            <h2  class="text-white fw-bold text-center pt-20">Crear Carrera</h2>
+        </div>
+        <div class="form-floating m-3">
+            <input type="text" class="form-control" id="nombreCarreraText" name="nombreCarreraText" placeholder="Nombre de la carrera">
+            <label for="nombreCarreraText">Nombre de la carrera</label>
+        </div>
+        <div class="row g-2 m-3">
+            <div class="col-md form-floating m-0" >
+                <input type="date" class="form-control" id="fechaDatetime" name="fechaDatetime" placeholder="Fecha">
+                <label for="fechaDatetime">Fecha</label>
+            </div>
+
+            <div class="col-md form-floating m-0">
+                <input type="text" class="form-control" id="distanciaText" name="distanciaText" placeholder="Distancia">
+                <label for="distanciaText">Distancia</label>
+            </div>
+        </div>
+        <div class="form-floating m-3">
+            <input type="text" class="form-control" id="lugarCarreraText" name="lugarCarreraText" placeholder="Lugar de la carrera">
+            <label for="lugarCarreraText">Lugar de la carrera</label>
+        </div>
+
+        <div class="form-floating m-3 text-white text-start fw-bold">
+            <span>Logo</span>
+            <input type="file" class="form-control" id="logoFile" name="logoFile" placeholder="Logo">
+        </div>
+        <button class="btn btn-lg btn-success" type="submit">Crear Registro</button>
+    </form>
+</div>
+{% endblock %}
