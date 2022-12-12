@@ -1,11 +1,13 @@
 #Imports
 from flask import Flask
 
-from flask import render_template, request, redirect, send_from_directory
+from flask import render_template, request, redirect, send_from_directory,url_for,flash
 
 from flaskext.mysql import MySQL
 
 from datetime import datetime
+
+from entidades.Usuario import Usuario
 
 import os
 
@@ -23,6 +25,8 @@ app.config['MYSQL_DATABASE_PASSWORD']=''
 
 app.config['MYSQL_DATABASE_BD']='race_track'
 
+app.config['SECRET_KEY'] = '[-,xw/R(vR;[i&RKTDz='
+
 mysql.init_app(app)
 
 #--------------------------
@@ -36,26 +40,42 @@ app.config['CARPETA']=CARPETA
 def index():
     return render_template('index.html')
 
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
 @app.route('/login',methods=['GET','POST'])
 def login():
-    if request.method=='POST':
-        print(request.form['email'])
-        print(request.form['password'])
-        #Se crea un usuario con los datos provistos en el formulario
-        # user = User(0,request.form['email'],request.form['password'])
-        # logged_user = ModelUser.login(db,user)
-        # if logged_user != None:
-        #     print("logged not none")
-        #     if logged_user.password:
-        #         print("logged true")
-        #         return redirect(url_for('home'))
-        #     else:
-        #         print("logged none")
-        #         flash("Contraseña incorrecta")
-        # else:
-        #     print("logged none")
-        #     flash("Usuario no registrado")
-        #     render_template('auth/login.html')
+    if request.method=='POST':        
+        #Recupero usuario y contraseña enviados desde el formulario
+        email = request.form['email']
+        password = request.form['password']
+                
+        sql = """SELECT id_usuario,correo_electronico,password,nombre,apellido,foto FROM race_track.usuarios 
+                 WHERE correo_electronico = '{}'""".format(email)
+        print(email)   
+        print(password)
+        print(sql)
+        
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        row = cursor.fetchone()                
+        
+        if row != None:
+            user = Usuario(row[0],row[1],Usuario.comprobar_password(row[2],password),row[3],row[4],row[5])
+
+            if user.password:
+                return redirect(url_for('home'))
+            else:
+                flash('Contaseña incorrecta')
+                
+        else:
+            flash('Usuario inexistente')
+        
+        
+        
+        
         return render_template('auth/login.html')
     else:
         return render_template('auth/login.html')
